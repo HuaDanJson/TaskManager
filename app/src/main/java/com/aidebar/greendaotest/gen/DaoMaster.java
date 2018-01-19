@@ -21,18 +21,18 @@ public class DaoMaster extends AbstractDaoMaster {
 
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(Database db, boolean ifNotExists) {
-        DBUserInfoBeanDao.createTable(db, ifNotExists);
         DBBuyTicketBeanDao.createTable(db, ifNotExists);
-        DBTicketBeanDao.createTable(db, ifNotExists);
         DBShouChangTicketBeanDao.createTable(db, ifNotExists);
+        DBTicketBeanDao.createTable(db, ifNotExists);
+        DBUserInfoBeanDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
-        DBUserInfoBeanDao.dropTable(db, ifExists);
         DBBuyTicketBeanDao.dropTable(db, ifExists);
-        DBTicketBeanDao.dropTable(db, ifExists);
         DBShouChangTicketBeanDao.dropTable(db, ifExists);
+        DBTicketBeanDao.dropTable(db, ifExists);
+        DBUserInfoBeanDao.dropTable(db, ifExists);
     }
 
     /**
@@ -51,10 +51,10 @@ public class DaoMaster extends AbstractDaoMaster {
 
     public DaoMaster(Database db) {
         super(db, SCHEMA_VERSION);
-        registerDaoClass(DBUserInfoBeanDao.class);
         registerDaoClass(DBBuyTicketBeanDao.class);
-        registerDaoClass(DBTicketBeanDao.class);
         registerDaoClass(DBShouChangTicketBeanDao.class);
+        registerDaoClass(DBTicketBeanDao.class);
+        registerDaoClass(DBUserInfoBeanDao.class);
     }
 
     public DaoSession newSession() {
