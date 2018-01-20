@@ -23,6 +23,7 @@ public class DaoMaster extends AbstractDaoMaster {
     public static void createAllTables(Database db, boolean ifNotExists) {
         DBBuyTicketBeanDao.createTable(db, ifNotExists);
         DBShouChangTicketBeanDao.createTable(db, ifNotExists);
+        DBTaskManagerUserInfoBeanDao.createTable(db, ifNotExists);
         DBTicketBeanDao.createTable(db, ifNotExists);
         DBUserInfoBeanDao.createTable(db, ifNotExists);
     }
@@ -31,6 +32,7 @@ public class DaoMaster extends AbstractDaoMaster {
     public static void dropAllTables(Database db, boolean ifExists) {
         DBBuyTicketBeanDao.dropTable(db, ifExists);
         DBShouChangTicketBeanDao.dropTable(db, ifExists);
+        DBTaskManagerUserInfoBeanDao.dropTable(db, ifExists);
         DBTicketBeanDao.dropTable(db, ifExists);
         DBUserInfoBeanDao.dropTable(db, ifExists);
     }
@@ -53,6 +55,7 @@ public class DaoMaster extends AbstractDaoMaster {
         super(db, SCHEMA_VERSION);
         registerDaoClass(DBBuyTicketBeanDao.class);
         registerDaoClass(DBShouChangTicketBeanDao.class);
+        registerDaoClass(DBTaskManagerUserInfoBeanDao.class);
         registerDaoClass(DBTicketBeanDao.class);
         registerDaoClass(DBUserInfoBeanDao.class);
     }

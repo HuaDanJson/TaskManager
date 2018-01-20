@@ -10,11 +10,13 @@ import org.greenrobot.greendao.internal.DaoConfig;
 
 import com.education.myoschinatest.bean.DBBuyTicketBean;
 import com.education.myoschinatest.bean.DBShouChangTicketBean;
+import com.education.myoschinatest.bean.DBTaskManagerUserInfoBean;
 import com.education.myoschinatest.bean.DBTicketBean;
 import com.education.myoschinatest.bean.DBUserInfoBean;
 
 import com.aidebar.greendaotest.gen.DBBuyTicketBeanDao;
 import com.aidebar.greendaotest.gen.DBShouChangTicketBeanDao;
+import com.aidebar.greendaotest.gen.DBTaskManagerUserInfoBeanDao;
 import com.aidebar.greendaotest.gen.DBTicketBeanDao;
 import com.aidebar.greendaotest.gen.DBUserInfoBeanDao;
 
@@ -29,11 +31,13 @@ public class DaoSession extends AbstractDaoSession {
 
     private final DaoConfig dBBuyTicketBeanDaoConfig;
     private final DaoConfig dBShouChangTicketBeanDaoConfig;
+    private final DaoConfig dBTaskManagerUserInfoBeanDaoConfig;
     private final DaoConfig dBTicketBeanDaoConfig;
     private final DaoConfig dBUserInfoBeanDaoConfig;
 
     private final DBBuyTicketBeanDao dBBuyTicketBeanDao;
     private final DBShouChangTicketBeanDao dBShouChangTicketBeanDao;
+    private final DBTaskManagerUserInfoBeanDao dBTaskManagerUserInfoBeanDao;
     private final DBTicketBeanDao dBTicketBeanDao;
     private final DBUserInfoBeanDao dBUserInfoBeanDao;
 
@@ -47,6 +51,9 @@ public class DaoSession extends AbstractDaoSession {
         dBShouChangTicketBeanDaoConfig = daoConfigMap.get(DBShouChangTicketBeanDao.class).clone();
         dBShouChangTicketBeanDaoConfig.initIdentityScope(type);
 
+        dBTaskManagerUserInfoBeanDaoConfig = daoConfigMap.get(DBTaskManagerUserInfoBeanDao.class).clone();
+        dBTaskManagerUserInfoBeanDaoConfig.initIdentityScope(type);
+
         dBTicketBeanDaoConfig = daoConfigMap.get(DBTicketBeanDao.class).clone();
         dBTicketBeanDaoConfig.initIdentityScope(type);
 
@@ -55,11 +62,13 @@ public class DaoSession extends AbstractDaoSession {
 
         dBBuyTicketBeanDao = new DBBuyTicketBeanDao(dBBuyTicketBeanDaoConfig, this);
         dBShouChangTicketBeanDao = new DBShouChangTicketBeanDao(dBShouChangTicketBeanDaoConfig, this);
+        dBTaskManagerUserInfoBeanDao = new DBTaskManagerUserInfoBeanDao(dBTaskManagerUserInfoBeanDaoConfig, this);
         dBTicketBeanDao = new DBTicketBeanDao(dBTicketBeanDaoConfig, this);
         dBUserInfoBeanDao = new DBUserInfoBeanDao(dBUserInfoBeanDaoConfig, this);
 
         registerDao(DBBuyTicketBean.class, dBBuyTicketBeanDao);
         registerDao(DBShouChangTicketBean.class, dBShouChangTicketBeanDao);
+        registerDao(DBTaskManagerUserInfoBean.class, dBTaskManagerUserInfoBeanDao);
         registerDao(DBTicketBean.class, dBTicketBeanDao);
         registerDao(DBUserInfoBean.class, dBUserInfoBeanDao);
     }
@@ -67,6 +76,7 @@ public class DaoSession extends AbstractDaoSession {
     public void clear() {
         dBBuyTicketBeanDaoConfig.clearIdentityScope();
         dBShouChangTicketBeanDaoConfig.clearIdentityScope();
+        dBTaskManagerUserInfoBeanDaoConfig.clearIdentityScope();
         dBTicketBeanDaoConfig.clearIdentityScope();
         dBUserInfoBeanDaoConfig.clearIdentityScope();
     }
@@ -77,6 +87,10 @@ public class DaoSession extends AbstractDaoSession {
 
     public DBShouChangTicketBeanDao getDBShouChangTicketBeanDao() {
         return dBShouChangTicketBeanDao;
+    }
+
+    public DBTaskManagerUserInfoBeanDao getDBTaskManagerUserInfoBeanDao() {
+        return dBTaskManagerUserInfoBeanDao;
     }
 
     public DBTicketBeanDao getDBTicketBeanDao() {
