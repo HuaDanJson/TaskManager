@@ -1,11 +1,11 @@
 package com.education.myoschinatest.ui.Home1;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.education.myoschinatest.R;
+import com.education.myoschinatest.base.BaseActivity;
 
-public class EndTaskActivity extends AppCompatActivity {
+public class DeleteTaskActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

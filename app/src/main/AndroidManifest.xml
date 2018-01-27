@@ -41,44 +41,38 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-
         <activity
             android:name=".ui.other.login.RegisterActivity"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity
             android:name=".ui.Home3.UserInfoActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ui.Home3.BuyTicketInfoActivity"/>
-
-        <activity
-            android:name=".ui.Home3.AllUserActivity"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity
             android:name=".ui.other.login.LoginActivity"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity
             android:name=".ui.Home1.LaunchTaskActivity"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity
             android:name=".ui.Home1.CheckTaskActivity"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".ui.Home1.FixTaskActivity"
-            android:screenOrientation="portrait"/>
-
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity
-            android:name=".ui.Home1.EndTaskActivity"
-            android:screenOrientation="portrait"/>
+            android:name=".ui.Home1.DeleteTaskActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+
     </application>
 
 </manifest>

@@ -10,11 +10,15 @@ import android.widget.TextView;
 
 import com.education.myoschinatest.R;
 import com.education.myoschinatest.base.BaseFragment;
+import com.education.myoschinatest.bean.DBTaskManagerUserInfoBean;
+import com.education.myoschinatest.utils.ToastHelper;
+import com.education.myoschinatest.utils.YiLog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import cn.bmob.v3.BmobUser;
 
 public class Fragment1 extends BaseFragment {
 
@@ -23,6 +27,7 @@ public class Fragment1 extends BaseFragment {
     @BindView(R.id.tv_fix_task_fragment1) TextView tvFixTaskFragment1;
     @BindView(R.id.tv_end_task_fragment1) TextView tvEndTaskFragment1;
     Unbinder unbinder;
+    private DBTaskManagerUserInfoBean mCurrentUser;
 
     public static Fragment1 instanceFragment() {
         Fragment1 fragment1 = new Fragment1();
@@ -46,6 +51,7 @@ public class Fragment1 extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
+        mCurrentUser = BmobUser.getCurrentUser(DBTaskManagerUserInfoBean.class);
     }
 
     @Override
@@ -61,7 +67,12 @@ public class Fragment1 extends BaseFragment {
 
     @OnClick(R.id.tv_launch_task_fragment1)
     public void onLaunchTaskClicked(View view) {
-        startActivity(new Intent(getActivity(), LaunchTaskActivity.class));
+        YiLog.D("mCurrentUser = " + mCurrentUser);
+        if (mCurrentUser != null && mCurrentUser.getTypeOfWorkManager() == 0) {
+            startActivity(new Intent(getActivity(), LaunchTaskActivity.class));
+        } else {
+            ToastHelper.showShortMessage("只有管理员才可以添加新任务");
+        }
     }
 
     @OnClick(R.id.tv_check_task_fragment1)
@@ -76,7 +87,7 @@ public class Fragment1 extends BaseFragment {
 
     @OnClick(R.id.tv_end_task_fragment1)
     public void onEndTaskClicked(View view) {
-        startActivity(new Intent(getActivity(), EndTaskActivity.class));
+        startActivity(new Intent(getActivity(), DeleteTaskActivity.class));
     }
 
 }

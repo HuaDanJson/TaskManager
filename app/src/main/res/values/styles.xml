@@ -21,5 +21,11 @@
         <item name="android:windowBackground">@drawable/welecome_bg</item>
     </style>
 
+    <style name="paddingRightButton">
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">18dp</item>
+        <item name="android:paddingRight">18dp</item>
+    </style>
 
 </resources>

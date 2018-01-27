@@ -63,6 +63,10 @@
         <item name="line_green" type="drawable">#ff3bbd79</item>
 
         <color name="like">#f50057</color>
+    <color name="feedback_activity_edit_stroke_color">#1f000000</color>
+    <color name="feedback_activity_commit_background_color">#FFDD191D</color>
+    <color name="base_bar_action">#FF4D73FF</color>
+
 
 </resources>
 

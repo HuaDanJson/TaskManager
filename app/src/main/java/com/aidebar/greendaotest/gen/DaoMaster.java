@@ -26,6 +26,7 @@ public class DaoMaster extends AbstractDaoMaster {
         DBTaskManagerUserInfoBeanDao.createTable(db, ifNotExists);
         DBTicketBeanDao.createTable(db, ifNotExists);
         DBUserInfoBeanDao.createTable(db, ifNotExists);
+        DBTaskBeanDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
@@ -35,6 +36,7 @@ public class DaoMaster extends AbstractDaoMaster {
         DBTaskManagerUserInfoBeanDao.dropTable(db, ifExists);
         DBTicketBeanDao.dropTable(db, ifExists);
         DBUserInfoBeanDao.dropTable(db, ifExists);
+        DBTaskBeanDao.dropTable(db, ifExists);
     }
 
     /**
@@ -58,6 +60,7 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(DBTaskManagerUserInfoBeanDao.class);
         registerDaoClass(DBTicketBeanDao.class);
         registerDaoClass(DBUserInfoBeanDao.class);
+        registerDaoClass(DBTaskBeanDao.class);
     }
 
     public DaoSession newSession() {
