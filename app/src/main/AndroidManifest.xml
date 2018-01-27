@@ -41,6 +41,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ui.MainActivity"
             android:screenOrientation="portrait"
@@ -52,9 +53,7 @@
 
         <activity
             android:name=".ui.Home3.UserInfoActivity"
-
             android:screenOrientation="portrait"/>
-
         <activity android:name=".ui.Home3.BuyTicketInfoActivity"/>
 
         <activity
@@ -63,8 +62,23 @@
 
         <activity
             android:name=".ui.other.login.LoginActivity"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.Home1.LaunchTaskActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.Home1.CheckTaskActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.Home1.FixTaskActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".ui.Home1.EndTaskActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
