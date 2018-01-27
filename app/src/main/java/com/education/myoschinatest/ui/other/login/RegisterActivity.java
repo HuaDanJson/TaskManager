@@ -3,7 +3,6 @@ package com.education.myoschinatest.ui.other.login;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -47,7 +46,6 @@ public class RegisterActivity extends AppCompatActivity {
     private int typeOfWorkManager = 0;
     private String typeOfWork = "管理员";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +58,20 @@ public class RegisterActivity extends AppCompatActivity {
                 setRegisterClick();
             }
         });
+
+        spinnerKindWork.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
+                typeOfWork = adapter.getItemAtPosition(position).toString();
+                typeOfWorkManager = position;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                String typeOfWork = "管理员";
+                typeOfWorkManager = 0;
+            }
+        });
     }
 
     public void setRegisterClick() {
@@ -70,21 +82,6 @@ public class RegisterActivity extends AppCompatActivity {
         String old = edtRegisterActivityOld.getText().toString();
         String tellPhone = edtRegisterActivityTel.getText().toString();
         String mail = edtRegisterActivityMail.getText().toString();
-
-        spinnerKindWork.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapter, View view, int position, long id) {
-                String typeOfWork = adapter.getItemAtPosition(position).toString();
-                typeOfWorkManager = position;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                String typeOfWork = "管理员";
-                typeOfWorkManager = 0;
-            }
-        });
-
         if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(passWord1) || TextUtils.isEmpty(passWord2) || TextUtils.isEmpty(name) || TextUtils.isEmpty(old) || TextUtils.isEmpty(tellPhone) || TextUtils.isEmpty(mail)) {
             Toast.makeText(RegisterActivity.this, "请输入完整信息后再注册", Toast.LENGTH_SHORT).show();
         } else {
@@ -105,10 +102,8 @@ public class RegisterActivity extends AppCompatActivity {
                         if (e == null) {
                             DBTaskManagerUserInfoBeanUtils.getInstance().insertOneData(dbUserInfoBean);
                             Toast.makeText(RegisterActivity.this, "恭喜您，注册成功", Toast.LENGTH_SHORT).show();
-                            Log.i("aaa", "注册成功 :" + dbTaskManagerUserInfoBean.toString());
                             RegisterActivity.this.finish();
                         } else {
-                            Log.i("aaa", "注册失败 :" + e);
                             Toast.makeText(RegisterActivity.this, "注册失败 ：" + e, Toast.LENGTH_SHORT).show();
                         }
                     }
