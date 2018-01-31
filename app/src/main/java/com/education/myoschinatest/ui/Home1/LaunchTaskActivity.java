@@ -15,7 +15,11 @@ import com.education.myoschinatest.utils.ToastHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobInstallation;
+import cn.bmob.v3.BmobInstallationManager;
 import cn.bmob.v3.BmobPushManager;
+import cn.bmob.v3.InstallationListener;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.PushListener;
 import cn.bmob.v3.listener.SaveListener;
@@ -32,6 +36,19 @@ public class LaunchTaskActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch_task);
         ButterKnife.bind(this);
+        Bmob.initialize(this, "5f38f08929314ed5b3f0f4992b847582");
+        BmobInstallationManager.getInstallationId();
+        BmobInstallationManager.getInstance().getCurrentInstallation();
+        BmobInstallationManager.getInstance().initialize(new InstallationListener<BmobInstallation>() {
+            @Override
+            public void done(BmobInstallation bmobInstallation, BmobException e) {
+                if (e == null) {
+                    Log.i("bmob", bmobInstallation.getObjectId() + "-" + bmobInstallation.getInstallationId());
+                } else {
+                    Log.i("bmob", e.getMessage());
+                }
+            }
+        });
     }
 
     @OnClick({R.id.ll_commit_launch_task_activity})

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.education.myoschinatest.utils.GsonConverter;
+
 import org.greenrobot.eventbus.EventBus;
 
 import cn.bmob.push.PushConstants;

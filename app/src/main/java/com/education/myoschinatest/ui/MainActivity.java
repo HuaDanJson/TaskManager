@@ -177,13 +177,13 @@ public class MainActivity extends BaseActivity {
         PendingIntent pit = PendingIntent.getActivity(MainActivity.this, 0, intent, 0);
 //                设置图片文字提示方式等等
         Notification.Builder builder = new Notification.Builder(MainActivity.this);
-        builder.setContentTitle(notificationBean.getAlert())                        //标题
-                .setContentText("Notification content")      //内容
+        builder.setContentTitle("您有 任务系统 新的消息")                        //标题
+                .setContentText(notificationBean.getAlert())      //内容
                 .setSubText("——内容下面的一小段文字")                    //内容下面的一小段文字
                 .setTicker("收到信息后状态栏显示的文字信息~")             //收到信息后状态栏显示的文字信息
                 .setWhen(System.currentTimeMillis())           //设置通知时间
-                .setSmallIcon(R.mipmap.ic_launcher)            //设置小图标
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
+                .setSmallIcon(R.drawable.icon_logo)            //设置小图标
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.icon_logo))
                 .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE)    //设置默认的三色灯与振动器
                 .setAutoCancel(true)                           //设置点击后取消Notification
                 .setContentIntent(pit);
