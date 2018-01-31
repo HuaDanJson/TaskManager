@@ -2,6 +2,7 @@ package com.education.myoschinatest.ui.Home1;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -14,7 +15,9 @@ import com.education.myoschinatest.utils.ToastHelper;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.BmobPushManager;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.PushListener;
 import cn.bmob.v3.listener.SaveListener;
 
 public class LaunchTaskActivity extends BaseActivity {
@@ -57,6 +60,18 @@ public class LaunchTaskActivity extends BaseActivity {
                     if (e == null) {
                         mCommitLinearLayout.setClickable(true);
                         ToastHelper.showLongMessage("新任务发起成功");
+
+                        BmobPushManager bmobPushManager = new BmobPushManager();
+                        bmobPushManager.pushMessageAll("你有新的任务请注意查收", new PushListener() {
+                            @Override
+                            public void done(BmobException e) {
+                                if (e == null) {
+                                    Log.i("bmob", "Client 推送成功！");
+                                } else {
+                                    Log.i("bmob", "Client 异常：" + e.getMessage());
+                                }
+                            }
+                        });
                         finish();
                     } else {
                         mCommitLinearLayout.setClickable(true);

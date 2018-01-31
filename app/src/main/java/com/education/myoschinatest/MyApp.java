@@ -3,6 +3,7 @@ package com.education.myoschinatest;
 import android.app.Activity;
 import android.app.Application;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.education.myoschinatest.DBBeanUtils.ConstKey;
 import com.education.myoschinatest.DBBeanUtils.DBBuyTicketBeanUtils;
@@ -14,6 +15,13 @@ import com.education.myoschinatest.utils.ToastHelper;
 import com.litesuits.orm.LiteOrm;
 
 import java.util.ArrayList;
+
+import cn.bmob.push.BmobPush;
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobInstallation;
+import cn.bmob.v3.BmobInstallationManager;
+import cn.bmob.v3.InstallationListener;
+import cn.bmob.v3.exception.BmobException;
 
 public class MyApp extends Application {
     private static LiteOrm liteOrm;
@@ -39,6 +47,23 @@ public class MyApp extends Application {
         ToastHelper.init(this);
 
         DBTaskManagerUserInfoBeanUtils.Init(getApplicationContext());
+
+        //TODO 集成：1.4、初始化数据服务SDK、初始化设备信息并启动推送服务
+        // 初始化BmobSDK
+        Bmob.initialize(this, "66780a64cd33942356701f85caf06551");
+        // 使用推送服务时的初始化操作
+        BmobInstallationManager.getInstance().initialize(new InstallationListener<BmobInstallation>() {
+            @Override
+            public void done(BmobInstallation bmobInstallation, BmobException e) {
+                if (e == null) {
+                    Log.i("bmob", bmobInstallation.getObjectId() + "-" + bmobInstallation.getInstallationId());
+                } else {
+                    Log.i("bmob", e.getMessage());
+                }
+            }
+        });
+        // 启动推送服务
+        BmobPush.startWork(this);
     }
 
     private void initLiteOrm() {
@@ -50,8 +75,9 @@ public class MyApp extends Application {
 
 
     public void addActivity(Activity activity) {
-        if (!activitys.contains(activity))
+        if (!activitys.contains(activity)) {
             activitys.add(activity);
+        }
     }
 
     public void removeActiivty(Activity activity) {
