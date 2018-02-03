@@ -179,8 +179,8 @@ public class MainActivity extends BaseActivity {
         Notification.Builder builder = new Notification.Builder(MainActivity.this);
         builder.setContentTitle("您有 任务系统 新的消息")                        //标题
                 .setContentText(notificationBean.getAlert())      //内容
-                .setSubText("——内容下面的一小段文字")                    //内容下面的一小段文字
-                .setTicker("收到信息后状态栏显示的文字信息~")             //收到信息后状态栏显示的文字信息
+                .setSubText(notificationBean.getAlert())                    //内容下面的一小段文字
+                .setTicker(notificationBean.getAlert())             //收到信息后状态栏显示的文字信息
                 .setWhen(System.currentTimeMillis())           //设置通知时间
                 .setSmallIcon(R.drawable.icon_logo)            //设置小图标
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.icon_logo))

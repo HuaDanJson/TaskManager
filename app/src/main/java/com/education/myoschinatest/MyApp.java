@@ -50,7 +50,7 @@ public class MyApp extends Application {
 
         //TODO 集成：1.4、初始化数据服务SDK、初始化设备信息并启动推送服务
         // 初始化BmobSDK
-        Bmob.initialize(this, "66780a64cd33942356701f85caf06551");
+        Bmob.initialize(this, "5f38f08929314ed5b3f0f4992b847582");
         // 使用推送服务时的初始化操作
         BmobInstallationManager.getInstance().initialize(new InstallationListener<BmobInstallation>() {
             @Override
