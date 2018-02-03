@@ -11,6 +11,7 @@ import com.education.myoschinatest.DBBeanUtils.DBShouChangTicketBeanUtils;
 import com.education.myoschinatest.DBBeanUtils.DBTaskManagerUserInfoBeanUtils;
 import com.education.myoschinatest.DBBeanUtils.DBTicketBeanUtils;
 import com.education.myoschinatest.DBBeanUtils.DBUserInfoBeanUtils;
+import com.education.myoschinatest.utils.DBTaskBeanUtils;
 import com.education.myoschinatest.utils.ToastHelper;
 import com.litesuits.orm.LiteOrm;
 
@@ -47,6 +48,8 @@ public class MyApp extends Application {
         ToastHelper.init(this);
 
         DBTaskManagerUserInfoBeanUtils.Init(getApplicationContext());
+
+        DBTaskBeanUtils.Init(getApplicationContext());
 
         //TODO 集成：1.4、初始化数据服务SDK、初始化设备信息并启动推送服务
         // 初始化BmobSDK

@@ -15,11 +15,13 @@ import android.util.Log;
 
 import com.education.myoschinatest.R;
 import com.education.myoschinatest.base.BaseActivity;
+import com.education.myoschinatest.bean.DBTaskBean;
 import com.education.myoschinatest.notification.NotificationBean;
 import com.education.myoschinatest.ui.Home1.Fragment1;
 import com.education.myoschinatest.ui.Home2.Fragment2;
 import com.education.myoschinatest.ui.Home3.Fragment3;
 import com.education.myoschinatest.ui.other.TabEntity;
+import com.education.myoschinatest.utils.DBTaskBeanUtils;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -29,12 +31,15 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.BmobInstallationManager;
+import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.InstallationListener;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
 
 public class MainActivity extends BaseActivity {
     private Fragment1 fragment1;
@@ -68,6 +73,8 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
+
+        getMediaData();
     }
 
     //用来初始化底部导航
@@ -190,6 +197,24 @@ public class MainActivity extends BaseActivity {
         Notification notification = builder.build();
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0, notification);
+        getMediaData();
+    }
+
+    public void getMediaData() {
+        BmobQuery<DBTaskBean> query = new BmobQuery<DBTaskBean>();
+        // 按时间降序查询
+        query.order("-createdAt");
+        query.setLimit(20);
+        query.findObjects(new FindListener<DBTaskBean>() {
+            @Override
+            public void done(List<DBTaskBean> list, BmobException e) {
+                if (e == null) {
+                    if (list.size() > 0) {
+                        DBTaskBeanUtils.getInstance().insertManyData(list);
+                    }
+                }
+            }
+        });
     }
 
 

@@ -6,14 +6,15 @@
 
     <string-array name="provarray">
         <item>管理员</item>
-        <item>程序1</item>
-        <item>程序2</item>
-        <item>程序3</item>
-        <item>程序4</item>
-        <item>程序5</item>
-        <item>程序6</item>
-        <item>程序7</item>
-        <item>程序8</item>
+        <item>设计</item>
+        <item>数冲</item>
+        <item>压铆</item>
+        <item>折弯</item>
+        <item>焊接</item>
+        <item>打磨</item>
+        <item>喷塑</item>
+        <item>装配</item>
+        <item>出库</item>
 
     </string-array>
 
