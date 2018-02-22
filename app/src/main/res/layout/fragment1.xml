@@ -53,7 +53,7 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/shape_corner_14dp_blue_primary_solid"
             android:gravity="center"
-            android:text="查 看 进 度"
+            android:text="查 看 任 务"
             android:textColor="@color/white"
             android:textSize="17sp"
             android:textStyle="bold"/>

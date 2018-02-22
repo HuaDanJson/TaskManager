@@ -210,7 +210,10 @@ public class MainActivity extends BaseActivity {
             public void done(List<DBTaskBean> list, BmobException e) {
                 if (e == null) {
                     if (list.size() > 0) {
-                        DBTaskBeanUtils.getInstance().insertManyData(list);
+                        boolean flag = DBTaskBeanUtils.getInstance().deleteAllData();
+                        if (flag) {
+                            DBTaskBeanUtils.getInstance().insertManyData(list);
+                        }
                     }
                 }
             }

@@ -108,6 +108,22 @@ public class DBTaskBeanUtils {
     }
 
     /**
+     * 完成对数据库中批量删除数据操作
+     *
+     * @return
+     */
+    public boolean deleteAllData() {
+        boolean flag = false;
+        try {
+            dbUserInvestmentDao.deleteAll();
+            flag = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    /**
      * 完成对数据库更新数据操作
      *
      * @return

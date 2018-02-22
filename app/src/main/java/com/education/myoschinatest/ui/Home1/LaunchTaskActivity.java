@@ -79,7 +79,7 @@ public class LaunchTaskActivity extends BaseActivity {
                         ToastHelper.showLongMessage("新任务发起成功");
 
                         BmobPushManager bmobPushManager = new BmobPushManager();
-                        bmobPushManager.pushMessageAll("你有新的任务请注意查收", new PushListener() {
+                        bmobPushManager.pushMessageAll("管理员发起了新的任务请注意查收", new PushListener() {
                             @Override
                             public void done(BmobException e) {
                                 if (e == null) {
