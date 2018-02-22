@@ -87,7 +87,11 @@ public class Fragment1 extends BaseFragment {
 
     @OnClick(R.id.tv_end_task_fragment1)
     public void onEndTaskClicked(View view) {
-        startActivity(new Intent(getActivity(), DeleteTaskActivity.class));
+        if (mCurrentUser != null && mCurrentUser.getTypeOfWorkManager() == 0) {
+            startActivity(new Intent(getActivity(), DeleteTaskActivity.class));
+        } else {
+            ToastHelper.showShortMessage("只有管理员才可以删除任务");
+        }
     }
 
 }
