@@ -16,11 +16,13 @@ import android.util.Log;
 import com.education.myoschinatest.R;
 import com.education.myoschinatest.base.BaseActivity;
 import com.education.myoschinatest.bean.DBTaskBean;
+import com.education.myoschinatest.db.DBNotificationBean;
 import com.education.myoschinatest.notification.NotificationBean;
 import com.education.myoschinatest.ui.Home1.Fragment1;
 import com.education.myoschinatest.ui.Home2.Fragment2;
 import com.education.myoschinatest.ui.Home3.Fragment3;
 import com.education.myoschinatest.ui.other.TabEntity;
+import com.education.myoschinatest.utils.DBNotificationBeanUtils;
 import com.education.myoschinatest.utils.DBTaskBeanUtils;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
@@ -198,6 +200,8 @@ public class MainActivity extends BaseActivity {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0, notification);
         getMediaData();
+        DBNotificationBean dbNotificationBean = new DBNotificationBean(System.currentTimeMillis(), notificationBean.getAlert());
+        DBNotificationBeanUtils.getInstance().insertOneData(dbNotificationBean);
     }
 
     public void getMediaData() {

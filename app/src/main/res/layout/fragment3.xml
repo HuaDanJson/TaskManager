@@ -41,7 +41,8 @@
             android:text="发 起 任 务"
             android:textColor="@color/white"
             android:textSize="17sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:visibility="gone"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -54,7 +55,8 @@
             android:text="查 看 进 度"
             android:textColor="@color/white"
             android:textSize="17sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:visibility="gone"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -67,7 +69,8 @@
             android:text="修 改 进 度"
             android:textColor="@color/white"
             android:textSize="17sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_log_out_fragment3"

@@ -29,7 +29,7 @@ buildscript {
     }
 }
 greendao {
-    schemaVersion 3  //<--数据库的版本，用于升级时候进行更改
+    schemaVersion 4  //<--数据库的版本，用于升级时候进行更改
     daoPackage 'com.aidebar.greendaotest.gen'     //存放自动生成代码的包
     targetGenDir 'src/main/java'                  //...
 }

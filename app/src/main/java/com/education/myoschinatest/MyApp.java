@@ -11,6 +11,7 @@ import com.education.myoschinatest.DBBeanUtils.DBShouChangTicketBeanUtils;
 import com.education.myoschinatest.DBBeanUtils.DBTaskManagerUserInfoBeanUtils;
 import com.education.myoschinatest.DBBeanUtils.DBTicketBeanUtils;
 import com.education.myoschinatest.DBBeanUtils.DBUserInfoBeanUtils;
+import com.education.myoschinatest.utils.DBNotificationBeanUtils;
 import com.education.myoschinatest.utils.DBTaskBeanUtils;
 import com.education.myoschinatest.utils.ToastHelper;
 import com.litesuits.orm.LiteOrm;
@@ -48,6 +49,7 @@ public class MyApp extends Application {
         ToastHelper.init(this);
 
         DBTaskManagerUserInfoBeanUtils.Init(getApplicationContext());
+        DBNotificationBeanUtils.Init(getApplicationContext());
 
         DBTaskBeanUtils.Init(getApplicationContext());
 
