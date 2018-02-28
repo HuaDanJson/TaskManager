@@ -10,18 +10,24 @@ import android.widget.TextView;
 
 import com.education.myoschinatest.R;
 import com.education.myoschinatest.base.BaseFragment;
+import com.education.myoschinatest.bean.DBTaskManagerUserInfoBean;
 import com.education.myoschinatest.ui.other.login.LoginActivity;
+import com.education.myoschinatest.utils.ToastHelper;
+import com.education.myoschinatest.utils.YiLog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import cn.bmob.v3.BmobUser;
 
 public class Fragment3 extends BaseFragment {
 
     @BindView(R.id.tv_log_out_fragment3) TextView tvLogOutFragment3;
 
     Unbinder unbinder;
+    @BindView(R.id.tv_check_user_info_fragment3) TextView tvCheckUserInfoFragment3;
+    private DBTaskManagerUserInfoBean mCurrentUser;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +45,7 @@ public class Fragment3 extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mCurrentUser = BmobUser.getCurrentUser(DBTaskManagerUserInfoBean.class);
 
     }
 
@@ -69,4 +76,14 @@ public class Fragment3 extends BaseFragment {
         startActivity(new Intent(getActivity(), LoginActivity.class));
     }
 
+    @OnClick(R.id.tv_check_user_info_fragment3)
+    public void onCheckUserinfoClicked(View view) {
+        YiLog.D("mCurrentUser = " + mCurrentUser);
+        if (mCurrentUser != null && mCurrentUser.getTypeOfWorkManager() == 0) {
+            startActivity(new Intent(getActivity(), AllUserActivity.class));
+        } else {
+            ToastHelper.showShortMessage("只有管理员才可以查看所有用户信息");
+        }
+    }
 }
+
