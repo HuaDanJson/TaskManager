@@ -78,6 +78,16 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden"/>
 
+        <activity
+            android:name=".ui.Home3.AllUserActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+
+        <activity
+            android:name=".ui.Home3.SendMessageActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+
         <!-- TODO 集成：1.2、添加推送所需要的服务和广播 -->
         <service
             android:name="cn.bmob.push.lib.service.PushService"
@@ -126,9 +136,6 @@
                 <action android:name="cn.bmob.push.action.NOTIFY"/>
             </intent-filter>
         </receiver>
-
-        <activity android:name=".ui.Home3.AllUserActivity">
-        </activity>
     </application>
 
 </manifest>

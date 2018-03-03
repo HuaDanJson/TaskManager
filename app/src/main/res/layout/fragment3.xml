@@ -46,6 +46,21 @@
             android:visibility="visible"/>
 
         <TextView
+            android:id="@+id/tv_send_message_fragment3"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shape_corner_14dp_blue_primary_solid"
+            android:gravity="center"
+            android:text="公 告 栏"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:visibility="visible"/>
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="46dp"
             android:layout_marginLeft="40dp"
@@ -72,6 +87,7 @@
             android:textSize="17sp"
             android:textStyle="bold"
             android:visibility="gone"/>
+
 
         <TextView
             android:id="@+id/tv_log_out_fragment3"

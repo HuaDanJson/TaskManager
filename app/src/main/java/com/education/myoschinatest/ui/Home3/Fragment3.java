@@ -85,5 +85,15 @@ public class Fragment3 extends BaseFragment {
             ToastHelper.showShortMessage("只有管理员才可以查看所有用户信息");
         }
     }
+
+    @OnClick(R.id.tv_send_message_fragment3)
+    public void onSendMessageClicked(View view) {
+        YiLog.D("mCurrentUser = " + mCurrentUser);
+        if (mCurrentUser != null && mCurrentUser.getTypeOfWorkManager() == 0) {
+            startActivity(new Intent(getActivity(), SendMessageActivity.class));
+        } else {
+            ToastHelper.showShortMessage("只有管理员才可以发送公告");
+        }
+    }
 }
 

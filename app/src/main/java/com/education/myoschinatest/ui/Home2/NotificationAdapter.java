@@ -51,6 +51,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         SimpleDateFormat sdr1 = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
         String createdTime2 = sdr1.format(new Date(dbTaskBeanList.get(position).getCreatTimeAsId()));
         holder.mTime.setText("消息通知时间：" + createdTime2);
+        holder.mValue.setText("消息通知内容：" + dbTaskBeanList.get(position).getAlert());
         holder.mDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +79,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         @BindView(R.id.tv_item_notification_time) TextView mTime;
         @BindView(R.id.tv_item_notification_delete) AppCompatButton mDelete;
+        @BindView(R.id.tv_item_notification_value) TextView mValue;
 
         public NotificationAdapterViewHolder(View itemView) {
             super(itemView);
