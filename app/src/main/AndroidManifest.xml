@@ -77,7 +77,6 @@
             android:name=".ui.Home1.DeleteTaskActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden"/>
-
         <activity
             android:name=".ui.Home3.AllUserActivity"
             android:screenOrientation="portrait"
@@ -85,6 +84,11 @@
 
         <activity
             android:name=".ui.Home3.SendMessageActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+
+        <activity
+            android:name=".ui.Home3.CountTaskActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden"/>
 
@@ -137,5 +141,4 @@
             </intent-filter>
         </receiver>
     </application>
-
 </manifest>
