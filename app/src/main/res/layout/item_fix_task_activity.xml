@@ -62,6 +62,17 @@
             android:textSize="14dp"
             android:textStyle="bold"/>
 
+        <TextView
+            android:id="@+id/tv_item_end_time_fix_task_adapter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="任务结束时间"
+            android:textSize="14dp"
+            android:textStyle="bold"/>
+
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/tv_item_finish_fix_task_adapter"
             android:layout_width="match_parent"

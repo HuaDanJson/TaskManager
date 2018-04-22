@@ -57,8 +57,13 @@ public class FixTaskAdapter extends RecyclerView.Adapter<FixTaskAdapter.FixTaskA
         String createdTime2 = sdr1.format(new Date(dbTaskBeanList.get(position).getCreatTimeAsId()));
         holder.tvItemTime.setText("任务开始时间：" + createdTime2);
         if (dbTaskBeanList.get(position).getTaskProgress() < 9) {
+            holder.mEndTim.setVisibility(View.GONE);
             holder.tvItemProgressr.setText("任务进度：任务已完成到：" + mTask[dbTaskBeanList.get(position).getTaskProgress()] + "， 即将开始的工序：" + mTask[dbTaskBeanList.get(position).getTaskProgress() + 1]);
         } else {
+            holder.mEndTim.setVisibility(View.VISIBLE);
+            SimpleDateFormat sdr3 = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
+            String createdTime3 = sdr3.format(new Date(dbTaskBeanList.get(position).getCreatTimeAsId()));
+            holder.tvItemTime.setText("任务结束时间：" + createdTime3);
             holder.tvItemProgressr.setText("任务进度:恭喜该任务已经全部完成，大家辛苦！！");
         }
 
@@ -93,6 +98,7 @@ public class FixTaskAdapter extends RecyclerView.Adapter<FixTaskAdapter.FixTaskA
         @BindView(R.id.tv_item_time_fix_task_adapter) TextView tvItemTime;
         @BindView(R.id.tv_item_progress_fix_task_adapter) TextView tvItemProgressr;
         @BindView(R.id.tv_item_des_fix_task_adapter) TextView tvItemDes;
+        @BindView(R.id.tv_item_end_time_fix_task_adapter) TextView mEndTim;
         @BindView(R.id.tv_item_finish_fix_task_adapter) AppCompatButton btnItemFinish;
         @BindView(R.id.ll_item_all_fix_task_adapter) LinearLayout llTaskAll;
 

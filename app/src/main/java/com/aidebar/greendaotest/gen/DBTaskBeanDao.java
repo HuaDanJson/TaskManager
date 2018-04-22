@@ -31,6 +31,7 @@ public class DBTaskBeanDao extends AbstractDao<DBTaskBean, Long> {
         public final static Property TaskProgressDescribe = new Property(4, String.class, "taskProgressDescribe", false, "TASK_PROGRESS_DESCRIBE");
         public final static Property TaskProgress = new Property(5, int.class, "taskProgress", false, "TASK_PROGRESS");
         public final static Property Others = new Property(6, String.class, "others", false, "OTHERS");
+        public final static Property EndTime = new Property(7, long.class, "endTime", false, "END_TIME");
     }
 
 
@@ -52,7 +53,8 @@ public class DBTaskBeanDao extends AbstractDao<DBTaskBean, Long> {
                 "\"TASK_NUMBER\" TEXT," + // 3: TaskNumber
                 "\"TASK_PROGRESS_DESCRIBE\" TEXT," + // 4: taskProgressDescribe
                 "\"TASK_PROGRESS\" INTEGER NOT NULL ," + // 5: taskProgress
-                "\"OTHERS\" TEXT);"); // 6: others
+                "\"OTHERS\" TEXT," + // 6: others
+                "\"END_TIME\" INTEGER NOT NULL );"); // 7: endTime
     }
 
     /** Drops the underlying database table. */
@@ -91,6 +93,7 @@ public class DBTaskBeanDao extends AbstractDao<DBTaskBean, Long> {
         if (others != null) {
             stmt.bindString(7, others);
         }
+        stmt.bindLong(8, entity.getEndTime());
     }
 
     @Override
@@ -123,6 +126,7 @@ public class DBTaskBeanDao extends AbstractDao<DBTaskBean, Long> {
         if (others != null) {
             stmt.bindString(7, others);
         }
+        stmt.bindLong(8, entity.getEndTime());
     }
 
     @Override
@@ -139,7 +143,8 @@ public class DBTaskBeanDao extends AbstractDao<DBTaskBean, Long> {
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // TaskNumber
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // taskProgressDescribe
             cursor.getInt(offset + 5), // taskProgress
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6) // others
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // others
+            cursor.getLong(offset + 7) // endTime
         );
         return entity;
     }
@@ -153,6 +158,7 @@ public class DBTaskBeanDao extends AbstractDao<DBTaskBean, Long> {
         entity.setTaskProgressDescribe(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setTaskProgress(cursor.getInt(offset + 5));
         entity.setOthers(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setEndTime(cursor.getLong(offset + 7));
      }
     
     @Override

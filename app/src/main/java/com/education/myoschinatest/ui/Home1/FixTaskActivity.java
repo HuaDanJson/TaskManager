@@ -71,6 +71,9 @@ public class FixTaskActivity extends BaseActivity implements FixTaskAdapter.FixT
         for (DBTaskBean dbTaskBean : mFixDBTaskBeanList) {
             if (dbTaskBean.getCreatTimeAsId() == createTimeAsId) {
                 dbTaskBean.setTaskProgress(dbTaskBean.getTaskProgress() + 1);
+                if (dbTaskBean.getTaskProgress() == 9) {
+                    dbTaskBean.setEndTime(System.currentTimeMillis());
+                }
                 DBTaskBeanUtils.getInstance().updateData(dbTaskBean);
                 dbTaskBean.update(dbTaskBean.getObjectId(), new UpdateListener() {
                     @Override

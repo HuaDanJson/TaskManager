@@ -51,9 +51,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskAdapterVie
         String createdTime2 = sdr1.format(new Date(dbTaskBeanList.get(position).getCreatTimeAsId()));
         holder.tvItemTime.setText("任务开始时间：" + createdTime2);
         if (dbTaskBeanList.get(position).getTaskProgress() < 9) {
+            holder.mEndTime.setVisibility(View.GONE);
             holder.tvItemProgressr.setText("任务进度：任务已完成到：" + mTask[dbTaskBeanList.get(position).getTaskProgress()] + "， 即将开始的工序：" + mTask[dbTaskBeanList.get(position).getTaskProgress() + 1]);
         } else {
+            holder.mEndTime.setVisibility(View.VISIBLE);
             holder.tvItemProgressr.setText("任务进度:恭喜该任务已经全部完成，大家辛苦！！");
+            SimpleDateFormat sdr3 = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
+            String createdTime3 = sdr3.format(new Date(dbTaskBeanList.get(position).getCreatTimeAsId()));
+            holder.mEndTime.setText("任务结束时间：" + createdTime3);
         }
 
     }
@@ -75,6 +80,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskAdapterVie
         @BindView(R.id.tv_item_time_task_adapter) TextView tvItemTime;
         @BindView(R.id.tv_item_progress_task_adapter) TextView tvItemProgressr;
         @BindView(R.id.tv_item_des_task_adapter) TextView tvItemDes;
+        @BindView(R.id.tv_item_end_time_task_adapter) TextView mEndTime;
         @BindView(R.id.ll_task_all_task_adapter) LinearLayout llTaskAll;
 
         public TaskAdapterViewHolder(View itemView) {

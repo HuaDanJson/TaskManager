@@ -22,10 +22,12 @@ public class DBTaskBean extends BmobObject {
     public String taskProgressDescribe;
     public int taskProgress;
     public String others;//作为任务补充
-    @Generated(hash = 155003008)
+    public long endTime;//任务结束时间
+
+    @Generated(hash = 1254777222)
     public DBTaskBean(long creatTimeAsId, String taskName, String taskDescribe,
-            String TaskNumber, String taskProgressDescribe, int taskProgress,
-            String others) {
+            String TaskNumber, String taskProgressDescribe, int taskProgress, String others,
+            long endTime) {
         this.creatTimeAsId = creatTimeAsId;
         this.taskName = taskName;
         this.taskDescribe = taskDescribe;
@@ -33,49 +35,65 @@ public class DBTaskBean extends BmobObject {
         this.taskProgressDescribe = taskProgressDescribe;
         this.taskProgress = taskProgress;
         this.others = others;
+        this.endTime = endTime;
     }
+
     @Generated(hash = 998821618)
     public DBTaskBean() {
     }
+
     public long getCreatTimeAsId() {
         return this.creatTimeAsId;
     }
+
     public void setCreatTimeAsId(long creatTimeAsId) {
         this.creatTimeAsId = creatTimeAsId;
     }
+
     public String getTaskName() {
         return this.taskName;
     }
+
     public void setTaskName(String taskName) {
         this.taskName = taskName;
     }
+
     public String getTaskDescribe() {
         return this.taskDescribe;
     }
+
     public void setTaskDescribe(String taskDescribe) {
         this.taskDescribe = taskDescribe;
     }
+
     public String getTaskNumber() {
         return this.TaskNumber;
     }
+
     public void setTaskNumber(String TaskNumber) {
         this.TaskNumber = TaskNumber;
     }
+
     public String getTaskProgressDescribe() {
         return this.taskProgressDescribe;
     }
+
     public void setTaskProgressDescribe(String taskProgressDescribe) {
         this.taskProgressDescribe = taskProgressDescribe;
     }
+
     public int getTaskProgress() {
         return this.taskProgress;
     }
+
     public void setTaskProgress(int taskProgress) {
         this.taskProgress = taskProgress;
     }
+
     public String getOthers() {
         return this.others;
     }
+
     public void setOthers(String others) {
         this.others = others;
     }
@@ -91,5 +109,13 @@ public class DBTaskBean extends BmobObject {
                 ", taskProgress=" + taskProgress +
                 ", others='" + others + '\'' +
                 '}';
+    }
+
+    public long getEndTime() {
+        return this.endTime;
+    }
+
+    public void setEndTime(long endTime) {
+        this.endTime = endTime;
     }
 }
